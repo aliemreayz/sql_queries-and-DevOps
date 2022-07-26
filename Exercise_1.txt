@@ -1,0 +1,8 @@
+SELECT
+    department_id,
+    employee_id,
+    FIRST_VALUE(salary)
+    OVER(PARTITION BY department_id
+    ORDER BY salary desc
+    ) highest_salary
+FROM HR.EMPLOYEES
