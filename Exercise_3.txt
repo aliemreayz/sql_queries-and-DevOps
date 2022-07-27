@@ -1,0 +1,6 @@
+SELECT
+    D.department_name,
+    SUBSTR(D.department_name, 5, 1) as "5th letter"
+FROM HR.DEPARTMENTS D
+LEFT JOIN HR.EMPLOYEES E ON D.department_id = E.department_id
+WHERE E.department_id IS NULL

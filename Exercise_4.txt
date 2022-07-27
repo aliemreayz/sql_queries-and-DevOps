@@ -1,0 +1,6 @@
+SELECT
+    D.department_name,
+    REVERSE(SUBSTR(D.department_name, -3)) as the_desired_part
+FROM HR.DEPARTMENTS D
+LEFT JOIN HR.EMPLOYEES E ON D.department_id = E.department_id
+WHERE E.department_id IS NULL

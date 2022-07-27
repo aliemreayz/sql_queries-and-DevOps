@@ -1,0 +1,7 @@
+SELECT
+    location_id,
+    COUNT(*) as number_of_employees
+FROM HR.EMPLOYEES e
+JOIN HR.DEPARTMENTS d ON e.department_id = d.department_id 
+GROUP BY location_id
+ORDER BY location_id
