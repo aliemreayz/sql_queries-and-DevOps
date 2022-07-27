@@ -1,0 +1,14 @@
+SELECT
+    D.department_name,
+    (SELECT 
+        LISTAGG(STR) WITHIN GROUP (ORDER BY RN DESC)
+    FROM 
+    (
+        SELECT 
+            ROWNUM RN, SUBSTR(D.department_name,ROWNUM,1) STR 
+        FROM DUAL 
+        CONNECT BY LEVEL <= LENGTH(D.department_name)
+    )) Reversed
+FROM HR.DEPARTMENTS D
+LEFT JOIN HR.EMPLOYEES E ON D.department_id = E.department_id
+WHERE E.department_id IS NULL
